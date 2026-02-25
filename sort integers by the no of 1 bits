@@ -1,0 +1,22 @@
+class Solution:
+    def sortByBits(self, arr: List[int]) -> List[int]:
+        m = []
+
+        for num in arr:
+            count = 0
+            curr = num
+
+            while curr:
+                if curr & 1:
+                    count += 1
+                curr >>= 1
+
+            m.append((num, count))
+
+        m.sort(key=lambda x: (x[1], x[0]))
+
+        ans = []
+        for n, c in m:
+            ans.append(n)
+
+        return ans
